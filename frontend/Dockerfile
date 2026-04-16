@@ -1,7 +1,9 @@
 FROM node:18-alpine
 WORKDIR /app
-COPY frontend/package*.json ./
+# Ми вже всередині папки frontend
+COPY package*.json ./
 RUN npm install
-COPY frontend/ .
+COPY . .
 RUN npm run build
+# Використовуємо просту команду для запуску в Docker
 CMD ["npm", "run", "dev", "--", "--host"]
