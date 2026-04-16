@@ -1,11 +1,11 @@
-FROM node:18
+FROM node:18-slim
 WORKDIR /app
 COPY package*.json ./
-# Встановлюємо все чисто з нуля
 RUN npm install
 COPY . .
+# Додаємо права на виконання для vite
+RUN chmod +x node_modules/.bin/vite
 ENV HOST=0.0.0.0
 ENV PORT=5173
 EXPOSE 5173
-# Запускаємо через npx, щоб точно знайти vite
-CMD ["npx", "vite", "--host", "0.0.0.0"]
+CMD ["./node_modules/.bin/vite", "--host", "0.0.0.0"]
