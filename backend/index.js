@@ -5,7 +5,9 @@ const app = express();
 const PORT = 3000;
 
 // Рівень 2: Налаштування CORS та обробки JSON
-app.use(cors());
+app.use(cors({
+    origin: 'https://laba-2-dgdr.onrender.com'
+}));
 app.use(express.json());
 
 /**
